@@ -29,15 +29,26 @@ const fetchDataFromTable = async (tableName) => {
     }
 };
 
+// Function to update price with tax
+const updatePrice = (price) => {
+    const taxRate = 0.23; // 23%
+    return price * (1 + taxRate);
+};
+
 // Endpoint to fetch data from a specific table
-app.get('/fidzulu/:tableName', async (req, res) => {
+app.get('/:tableName', async (req, res) => {
     const tableName = req.params.tableName.toLowerCase();
 
     // Check if the requested table exists
     if (['bikes', 'books', 'dvds', 'food', 'laptops', 'toys'].includes(tableName)) {
         try {
             // Fetch data from the specified table
-            const data = await fetchDataFromTable(tableName);
+            let data = await fetchDataFromTable(tableName);
+
+             // Update prices with tax
+             for (let i = 0; i < data.length; i++) {
+                data[i].PRICE = updatePrice(data[i].PRICE);
+            }
 
             // Send the fetched data as the response
             res.json(data);
