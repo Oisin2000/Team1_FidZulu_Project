@@ -29,57 +29,65 @@ export class MainPageComponent {
     ngOnInit() {
         this.getItems();
     }
- 
+
     getItems() {
         this.mainService.getBikes()
             .subscribe({
                 next: data => {
+                    console.log('Received bike data:', data); // Log the data
                     this.bikes = data;
                     this.errorMessage = '';
-				}, 
-                error: e => this.errorMessage = e 
-			});
+                },
+                error: e => {
+                    console.error('Error fetching bike data:', e); // Log any errors
+                    this.errorMessage = e;
+                }
+            });
  
-      this.mainService.getBooks()
-            .subscribe({
-                next: data => {
-                    this.bikes = data;
-                    this.errorMessage = '';
-				}, 
-                error: e => this.errorMessage = e 
-			});
+    //   this.mainService.getBooks()
+    //         .subscribe({
+    //             next: data => {
+    //                 this.bikes = data;
+    //                 this.errorMessage = '';
+	// 			}, 
+    //             error: e => this.errorMessage = e 
+	// 		});
  
-      this.mainService.getDVDs()
-            .subscribe({
-                next: data => {
-                    this.bikes = data;
-                    this.errorMessage = '';
-				}, 
-                error: e => this.errorMessage = e 
-			});
+    //   this.mainService.getDVDs()
+    //         .subscribe({
+    //             next: data => {
+    //                 this.bikes = data;
+    //                 this.errorMessage = '';
+	// 			}, 
+    //             error: e => this.errorMessage = e 
+	// 		});
  
       this.mainService.getFood()
-            .subscribe({
-                next: data => {
-                    this.bikes = data;
-                    this.errorMessage = '';
-				}, 
-                error: e => this.errorMessage = e 
-			});
+                .subscribe({
+                    next: data => {
+                        console.log('Received food data:', data); // Log the data
+                        this.food = data;
+                        this.errorMessage = '';
+                    },
+                    error: e => {
+                        console.error('Error fetching bike data:', e); // Log any errors
+                        this.errorMessage = e;
+                    }
+                });
  
-      this.mainService.getLaptops()
-            .subscribe({
-                next: data => {
-                    this.bikes = data;
-                    this.errorMessage = '';
-				}, 
-                error: e => this.errorMessage = e 
-			});
+    //   this.mainService.getLaptops()
+    //         .subscribe({
+    //             next: data => {
+    //                 this.bikes = data;
+    //                 this.errorMessage = '';
+	// 			}, 
+    //             error: e => this.errorMessage = e 
+	// 		});
  
       this.mainService.getToys()
             .subscribe({
                 next: data => {
-                    this.bikes = data;
+                    this.toys = data;
                     this.errorMessage = '';
 				}, 
                 error: e => this.errorMessage = e 

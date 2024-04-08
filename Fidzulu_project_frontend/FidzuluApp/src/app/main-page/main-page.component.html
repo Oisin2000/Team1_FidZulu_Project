@@ -2,25 +2,22 @@
     <!-- Bikes Table -->
     <table class="table">
     <thead>
-    <tr>
-    <th>Category</th>
     <th>Name</th>
     <th>Brand</th>
     <th>Color</th>
     <th>Price</th>
-    </tr>
     </thead>
     <tbody>
     <tr *ngFor="let bike of bikes">
-    <td>Bikes</td>
-    <td>{{ bike.name }}</td>
-    <td>{{ bike.brand }}</td>
-    <td>{{ bike.color }}</td>
-    <td>{{ bike.price | currency }}</td>
+        <td>{{ bike.NAME }}</td>
+        <td>{{ bike.BRAND }}</td>
+        <td>{{ bike.COLOR }}</td>
+        <td>{{ bike.PRICE }}</td>
+        
     </tr>
     </tbody>
     </table>
-    <!-- Books Table -->
+    <!-- Books Table
     <table class="table">
     <thead>
     <tr>
@@ -42,9 +39,9 @@
     <td>{{ book.publisher }}</td>
     </tr>
     </tbody>
-    </table>
+    </table> -->
     <!-- DVDs Table -->
-    <table class="table">
+    <!-- <table class="table">
     <thead>
     <tr>
     <th>Category</th>
@@ -65,12 +62,11 @@
     <td>{{ dvd.price | currency }}</td>
     </tr>
     </tbody>
-    </table>
+    </table> -->
     <!-- Food Table -->
     <table class="table">
     <thead>
     <tr>
-    <th>Category</th>
     <th>Name</th>
     <th>Brand</th>
     <th>Weight</th>
@@ -80,17 +76,16 @@
     </thead>
     <tbody>
     <tr *ngFor="let food of food">
-    <td>Food</td>
-    <td>{{ food.name }}</td>
-    <td>{{ food.brand }}</td>
-    <td>{{ food.weight }}</td>
-    <td>{{ food.calories }}</td>
-    <td>{{ food.price | currency }}</td>
+    <td>{{ food.NAME }}</td>
+    <td>{{ food.BRAND }}</td>
+    <td>{{ food.WEIGHT }}</td>
+    <td>{{ food.CALORIES }}</td>
+    <td>{{ food.PRICE}}</td>
     </tr>
     </tbody>
     </table>
     <!-- Laptops Table -->
-    <table class="table">
+    <!-- <table class="table">
     <thead>
     <tr>
     <th>Category</th>
@@ -111,12 +106,11 @@
     <td>{{ laptop.price | currency }}</td>
     </tr>
     </tbody>
-    </table>
+    </table> -->
     <!-- Toys Table -->
     <table class="table">
     <thead>
     <tr>
-    <th>Category</th>
     <th>Name</th>
     <th>Brand</th>
     <th>Age Group</th>
@@ -125,11 +119,10 @@
     </thead>
     <tbody>
     <tr *ngFor="let toy of toys">
-    <td>Toys</td>
-    <td>{{ toy.name }}</td>
-    <td>{{ toy.brand }}</td>
-    <td>{{ toy.age_group }}</td>
-    <td>{{ toy.price | currency }}</td>
+    <td>{{ toy.NAME}}</td>
+    <td>{{ toy.BRAND }}</td>
+    <td>{{ toy.AGE_GROUP }}</td>
+    <td>{{ toy.PRICE }}</td>
     </tr>
     </tbody>
     </table>

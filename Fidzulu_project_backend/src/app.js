@@ -2,6 +2,7 @@ const express = require('express');
 const oracledb = require('oracledb');
 const app = express();
 const PORT = 3000;
+const cors = require('cors');
 
 // Oracle DB connection configuration
 const dbConfig = {
@@ -9,6 +10,9 @@ const dbConfig = {
     password: 'TIGER',
     connectString: 'localhost:1521/XEPDB1' // Host:Port/ServiceName
 };
+
+
+app.use(cors());
 
 // Function to fetch data from a specific table in the Oracle DB
 const fetchDataFromTable = async (tableName) => {
@@ -19,18 +23,31 @@ const fetchDataFromTable = async (tableName) => {
         // Execute the query to fetch data from the specified table
         const result = await connection.execute(`SELECT * FROM ${tableName}`);
 
+        // Get the column names
+        const columnNames = result.metaData.map(column => column.name);
+
+        // Combine column names with data rows
+        const dataWithColumnNames = result.rows.map(row => {
+            const rowData = {};
+            columnNames.forEach((colName, index) => {
+                rowData[colName] = row[index];
+            });
+            return rowData;
+        });
+
         // Release the connection
         await connection.close();
 
-        return result.rows;
+        return dataWithColumnNames;
     } catch (error) {
-        console.error(`Error fetching data from ${tableName.toUpperCase} table:`, error);
+        console.error(`Error fetching data from ${tableName.toUpperCase()} table:`, error);
         throw error;
     }
 };
 
+
 // Endpoint to fetch data from a specific table
-app.get('/fidzulu/:tableName', async (req, res) => {
+app.get('/:tableName', async (req, res) => {
     const tableName = req.params.tableName.toLowerCase();
 
     // Check if the requested table exists
