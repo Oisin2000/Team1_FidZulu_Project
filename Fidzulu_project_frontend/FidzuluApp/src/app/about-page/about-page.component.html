@@ -1,1 +1,7 @@
-<p>about-page works!</p>
+<h2>About Our Team</h2>
+<p>Team Name: {{ teamData?.team }}</p>
+<p>Team Members:</p>
+<ul>
+  <li *ngFor="let member of teamData?.membersNames">{{ member }}</li>
+</ul>
+
