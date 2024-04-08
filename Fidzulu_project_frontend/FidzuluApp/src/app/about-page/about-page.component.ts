@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TeamServiceService } from '../services/team-service.service';
 
 @Component({
   selector: 'app-about-page',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./about-page.component.css']
 })
 export class AboutPageComponent {
+
+  teamData: any;
+
+  constructor(private teamService: TeamServiceService) {}
+
+  ngOnInit(): void {
+    this.fetchTeamData()
+  }
+
+  fetchTeamData(): void {
+    this.teamService.getTeamData().subscribe(data => this.teamData = data)
+  }
 
 }
