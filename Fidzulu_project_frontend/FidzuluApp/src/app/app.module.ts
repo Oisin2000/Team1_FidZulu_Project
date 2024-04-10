@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { TeamServiceService } from './services/team-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -12,9 +14,10 @@ import { MainPageComponent } from './main-page/main-page.component';
     MainPageComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [TeamServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,131 @@
-<p>main-page works!</p>
+<div class="table-container">
+    <!-- Bikes Table -->
+    <table class="table">
+    <thead>
+    <th>Name</th>
+    <th>Brand</th>
+    <th>Color</th>
+    <th>Price</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let bike of bikes">
+        <td>{{ bike.NAME }}</td>
+        <td>{{ bike.BRAND }}</td>
+        <td>{{ bike.COLOR }}</td>
+        <td>{{ bike.PRICE }}</td>
+        
+    </tr>
+    </tbody>
+    </table>
+    <!-- Books Table
+    <table class="table">
+    <thead>
+    <tr>
+    <th>Category</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Price</th>
+    <th>ISBN</th>
+    <th>Publisher</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let book of books">
+    <td>Books</td>
+    <td>{{ book.title }}</td>
+    <td>{{ book.author }}</td>
+    <td>{{ book.price | currency }}</td>
+    <td>{{ book.ISBN }}</td>
+    <td>{{ book.publisher }}</td>
+    </tr>
+    </tbody>
+    </table> -->
+    <!-- DVDs Table -->
+    <!-- <table class="table">
+    <thead>
+    <tr>
+    <th>Category</th>
+    <th>Title</th>
+    <th>MPAA Rating</th>
+    <th>Studio</th>
+    <th>Time</th>
+    <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let dvd of dvds">
+    <td>DVDs</td>
+    <td>{{ dvd.title }}</td>
+    <td>{{ dvd.mpaa_rating }}</td>
+    <td>{{ dvd.studio }}</td>
+    <td>{{ dvd.time }}</td>
+    <td>{{ dvd.price | currency }}</td>
+    </tr>
+    </tbody>
+    </table> -->
+    <!-- Food Table -->
+    <table class="table">
+    <thead>
+    <tr>
+    <th>Name</th>
+    <th>Brand</th>
+    <th>Weight</th>
+    <th>Calories</th>
+    <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let food of food">
+    <td>{{ food.NAME }}</td>
+    <td>{{ food.BRAND }}</td>
+    <td>{{ food.WEIGHT }}</td>
+    <td>{{ food.CALORIES }}</td>
+    <td>{{ food.PRICE}}</td>
+    </tr>
+    </tbody>
+    </table>
+    <!-- Laptops Table -->
+    <!-- <table class="table">
+    <thead>
+    <tr>
+    <th>Category</th>
+    <th>Product</th>
+    <th>Brand</th>
+    <th>CPU</th>
+    <th>Memory</th>
+    <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let laptop of laptops">
+    <td>Laptops</td>
+    <td>{{ laptop.product }}</td>
+    <td>{{ laptop.brand }}</td>
+    <td>{{ laptop.CPU }}</td>
+    <td>{{ laptop.memory }}</td>
+    <td>{{ laptop.price | currency }}</td>
+    </tr>
+    </tbody>
+    </table> -->
+    <!-- Toys Table -->
+    <table class="table">
+    <thead>
+    <tr>
+    <th>Name</th>
+    <th>Brand</th>
+    <th>Age Group</th>
+    <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let toy of toys">
+    <td>{{ toy.NAME}}</td>
+    <td>{{ toy.BRAND }}</td>
+    <td>{{ toy.AGE_GROUP }}</td>
+    <td>{{ toy.PRICE }}</td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+
+  
