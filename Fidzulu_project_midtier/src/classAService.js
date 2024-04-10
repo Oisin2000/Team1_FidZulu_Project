@@ -42,3 +42,5 @@ app.get('/classA/:serviceName/all/:location', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`classA mid-tier service is running on port ${PORT}`);
 });
+
+module.exports = app;
