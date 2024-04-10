@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const oracle = require('oracledb');
+const cors = require('cors');
 
 const app = express();
 
@@ -13,6 +14,7 @@ const dbConfig = {
 
 // Middleware
 app.use(bodyParser.json());
+app.use(cors());
 
 // Service by location (US-NC, IE, IN)
 app.get('/:service/all/:location', async (req, res) => {
