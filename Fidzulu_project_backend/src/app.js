@@ -1,7 +1,9 @@
 const express = require('express');
-const oracledb = require('oracledb');
+const bodyParser = require('body-parser');
+const oracle = require('oracledb');
+
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Oracle DB connection configuration
 const dbConfig = {
@@ -10,57 +12,85 @@ const dbConfig = {
     connectString: 'localhost:1521/XEPDB1' // Host:Port/ServiceName
 };
 
-// Function to fetch data from a specific table in the Oracle DB
-const fetchDataFromTable = async (tableName) => {
-    try {
-        // Create a connection pool
-        const connection = await oracledb.getConnection(dbConfig);
+// Middleware
+app.use(bodyParser.json());
 
-        // Execute the query to fetch data from the specified table
-        const result = await connection.execute(`SELECT * FROM ${tableName}`);
+// Service by location (US-NC, IE, IN)
+app.get('/:service/all/:location', async (req, res) => {
+  const service = req.params.service.toLowerCase();
+  const location = req.params.location.toUpperCase();
 
-        // Release the connection
-        await connection.close();
+  try {
+    const connection = await oracle.getConnection(dbConfig);
 
-        return result.rows;
-    } catch (error) {
-        console.error(`Error fetching data from ${tableName.toUpperCase} table:`, error);
-        throw error;
+    let query = '';
+    // Converting from USD
+    let conversionRate = 1;
+    // Assuming that no sales tax is initially applied in the DB
+    let salesTaxRate = 0;
+
+    switch (location) {
+      case 'US-NC':
+        salesTaxRate = 0.08;
+        break;
+      case 'IE':
+        conversionRate = 1.23; // Convert USD to EUR
+        salesTaxRate = 0.23;
+        break;
+      case 'IN':
+        conversionRate = 0.014; // Convert USD to INR
+        salesTaxRate = 0.18;
+        break;
+      default:
+        return res.status(400).json({ error: 'Invalid location' });
     }
-};
 
-// Function to update price with tax
-const updatePrice = (price) => {
-    const taxRate = 0.23; // 23%
-    return price * (1 + taxRate);
-};
-
-// Endpoint to fetch data from a specific table
-app.get('/:tableName', async (req, res) => {
-    const tableName = req.params.tableName.toLowerCase();
-
-    // Check if the requested table exists
-    if (['bikes', 'books', 'dvds', 'food', 'laptops', 'toys'].includes(tableName)) {
-        try {
-            // Fetch data from the specified table
-            let data = await fetchDataFromTable(tableName);
-
-             // Update prices with tax
-             for (let i = 0; i < data.length; i++) {
-                data[i].PRICE = updatePrice(data[i].PRICE);
-            }
-
-            // Send the fetched data as the response
-            res.json(data);
-        } catch (error) {
-            res.status(500).send('Internal Server Error');
-        }
-    } else {
-        res.status(404).send('Table not found');
+    switch (service) {
+      case 'bikes':
+        query = 'SELECT * FROM BIKES';
+        break;
+      case 'books':
+        query = 'SELECT * FROM BOOKS';
+        break;
+      case 'dvds':
+        query = 'SELECT * FROM DVDS';
+        break;
+      case 'food':
+        query = 'SELECT * FROM FOOD';
+        break;
+      case 'laptops':
+        query = 'SELECT * FROM LAPTOPS';
+        break;
+      case 'toys':
+        query = 'SELECT * FROM TOYS';
+        break;
+      default:
+        return res.status(400).json({ error: 'Invalid service' });
     }
+
+    const result = await connection.execute(query);
+
+    const items = result.rows.map(row => {
+      const item = {};
+      for (let i = 0; i < result.metaData.length; i++) {
+        item[result.metaData[i].name.toLowerCase()] = row[i];
+      }
+      item.price *= conversionRate; // Apply currency conversion
+      item.price *= (1 + salesTaxRate); // Apply sales tax
+      item.price = parseFloat(item.price.toFixed(2));
+      return item;
+    });
+
+    connection.close();
+
+    res.json(items);
+  } catch (error) {
+    console.error('Error executing query:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
