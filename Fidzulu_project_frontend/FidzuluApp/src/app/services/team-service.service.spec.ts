@@ -35,7 +35,7 @@ describe('TeamService', () => {
       expect(data).toEqual(jasmine.objectContaining(mockTeamData));
     });
 
-    const req = httpTestingController.expectOne('http://localhost:3030/fidzulu/team');
+    const req = httpTestingController.expectOne('http://localhost:3021/classA/team');
     expect(req.request.method).toBe('GET');
     req.flush(mockTeamData);
   });
