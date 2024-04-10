@@ -1,6 +1,7 @@
 <div class="about-team-container">
   <button class="team-button" (click)="toggleTeamData()" [class.clicked]="showTeamData">About Our Team</button>
-  <div class="project-title">Fidzulu Team One Project</div>
+  <h1 class="project-title">Team One Fidzulu Shop Front</h1>
+  <h2 class="project-sub-title">Click below to shop!</h2>
   <div class="team-data-container" *ngIf="showTeamData">
     <h2>About Our Team</h2>
     <p>Team Name: {{ teamData?.team }}</p>

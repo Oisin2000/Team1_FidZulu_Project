@@ -8,8 +8,18 @@
     font-weight: bold;
     color: #4CAF50;
     margin-right: 20px;
-    margin-left: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
+  
+  .project-sub-title {
+    font-size: 25px;
+    color: black;
+    margin-top: 5px;
+    text-align: center;
+  }
+  
   
   .team-button {
     background-color: #4CAF50;
