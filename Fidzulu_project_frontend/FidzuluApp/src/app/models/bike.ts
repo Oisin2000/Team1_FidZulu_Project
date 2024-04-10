@@ -1,9 +1,9 @@
 export class Bike {
     constructor(
-      public ID: number,
-      public NAME: string,
-      public BRAND: string,
-      public COLOR: string,
-      public PRICE: number
+      public id: number,
+      public name: string,
+      public brand: string,
+      public color: string,
+      public price: number
     ) {}
   }

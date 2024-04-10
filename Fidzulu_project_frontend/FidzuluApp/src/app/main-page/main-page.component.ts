@@ -21,16 +21,30 @@ export class MainPageComponent {
   laptops: Laptop[] = [];
   toys: Toy[] = [];
 
+  regionMap: { [key: string]: string } = {
+    'ireland': 'ie',
+    'india': 'in',
+    'us': 'us-nc'
+  };
+
  
     errorMessage: string = "";
  
     constructor(private mainService : MainService) { }
  
     ngOnInit() {
-        this.getItems();
+        const defaultRegion = 'ie';
+        this.getItems(defaultRegion);
+      }
+    
+    onRegionSelect(event: any) {
+        const region = event.target.value;
+        const regionAbbreviation = this.regionMap[region];
+        console.log('Selected region:', region, 'Abbreviation:', regionAbbreviation);
+        this.getItems(regionAbbreviation);
     }
 
-    showBikes: boolean = false;
+  showBikes: boolean = false;
   showBooks: boolean = false;
   showDVDs: boolean = false;
   showFood: boolean = false;
@@ -62,67 +76,73 @@ export class MainPageComponent {
     }
   }
 
-    getItems() {
-        this.mainService.getBikes()
+  getItems(region: string) {
+    this.mainService.getBikes(region)
+        .subscribe({
+            next: data => {
+                console.log('Received bike data:', data);
+                this.bikes = data;
+                this.errorMessage = '';
+            },
+            error: e => {
+                console.error('Error fetching bike data:', e);
+                this.errorMessage = e;
+            }
+        });
+ 
+      this.mainService.getBooks(region)
             .subscribe({
                 next: data => {
-                    console.log('Received bike data:', data); // Log the data
-                    this.bikes = data;
-                    this.errorMessage = '';
-                },
-                error: e => {
-                    console.error('Error fetching bike data:', e); // Log any errors
-                    this.errorMessage = e;
-                }
-            });
- 
-    //   this.mainService.getBooks()
-    //         .subscribe({
-    //             next: data => {
-    //                 this.bikes = data;
-    //                 this.errorMessage = '';
-	// 			}, 
-    //             error: e => this.errorMessage = e 
-	// 		});
- 
-    //   this.mainService.getDVDs()
-    //         .subscribe({
-    //             next: data => {
-    //                 this.bikes = data;
-    //                 this.errorMessage = '';
-	// 			}, 
-    //             error: e => this.errorMessage = e 
-	// 		});
- 
-      this.mainService.getFood()
-                .subscribe({
-                    next: data => {
-                        console.log('Received food data:', data); // Log the data
-                        this.food = data;
-                        this.errorMessage = '';
-                    },
-                    error: e => {
-                        console.error('Error fetching bike data:', e); // Log any errors
-                        this.errorMessage = e;
-                    }
-                });
- 
-    //   this.mainService.getLaptops()
-    //         .subscribe({
-    //             next: data => {
-    //                 this.bikes = data;
-    //                 this.errorMessage = '';
-	// 			}, 
-    //             error: e => this.errorMessage = e 
-	// 		});
- 
-      this.mainService.getToys()
-            .subscribe({
-                next: data => {
-                    this.toys = data;
+                    console.log('Received book data:', data);
+                    this.books = data;
                     this.errorMessage = '';
 				}, 
                 error: e => this.errorMessage = e 
 			});
+ 
+      this.mainService.getDVDs(region)
+            .subscribe({
+                next: data => {
+                    this.dvds = data;
+                    this.errorMessage = '';
+				}, 
+                error: e => this.errorMessage = e 
+			});
+ 
+      this.mainService.getFood(region)
+                .subscribe({
+                    next: data => {
+                        console.log('Received food data:', data);
+                        this.food = data;
+                        this.errorMessage = '';
+                    },
+                    error: e => {
+                        console.error('Error fetching food data:', e);
+                        this.errorMessage = e;
+                    }
+                });
+ 
+      this.mainService.getLaptops(region)
+            .subscribe({
+                next: data => {
+                    console.log('Received laptop data:', data);
+                    this.laptops = data;
+                    this.errorMessage = '';
+				}, 
+                error: e => this.errorMessage = e 
+			});
+ 
+      this.mainService.getToys(region)
+      .subscribe({
+          next: data => {
+              console.log('Received toy data:', data);
+              this.toys = data;
+              this.errorMessage = '';
+          },
+          error: e => {
+              console.error('Error fetching toys data:', e);
+              this.errorMessage = e;
+          }
+      });
     }
   }

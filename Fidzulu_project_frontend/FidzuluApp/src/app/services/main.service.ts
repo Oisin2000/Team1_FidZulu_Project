@@ -8,32 +8,33 @@ import { Observable } from 'rxjs';
 export class MainService {
  
  
-  private baseUrl = 'http://localhost:3000'; // Replace with your backend URL
+  private classA_url = 'http://localhost:3021/classA';
+  private classB_url = 'http://localhost:3022/classB';
  
   constructor(private http: HttpClient) { }
  
-  getBikes(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/bikes`);
+  getBikes(region : string): Observable<any> {
+    return this.http.get(`${this.classA_url}/bikes/all/${region}`);
   }
  
-  getBooks(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/books`);
+  getBooks(region : string): Observable<any> {
+    return this.http.get(`${this.classB_url}/books/all/${region}`);
   }
  
-  getDVDs(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/dvds`);
+  getDVDs(region : string): Observable<any> {
+    return this.http.get(`${this.classB_url}/dvds/all/${region}`);
   }
  
-  getFood(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/food`);
+  getFood(region : string): Observable<any> {
+    return this.http.get(`${this.classA_url}/food/all/${region}`);
   }
  
-  getLaptops(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/laptops`);
+  getLaptops(region : string): Observable<any> {
+    return this.http.get(`${this.classB_url}/laptops/all/${region}`);
   }
  
-  getToys(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/toys`);
+  getToys(region : string): Observable<any> {
+    return this.http.get(`${this.classA_url}/toys/all/${region}`);
   }
  
  

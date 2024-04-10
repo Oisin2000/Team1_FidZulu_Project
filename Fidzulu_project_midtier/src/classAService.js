@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors')
 
 const app = express();
 const PORT = 3021; // Mid-tier service port for classA
@@ -13,6 +14,8 @@ const servicePortMap = {
     food: 3032,
     toys: 3033
 };
+
+app.use(cors());
 
 // Endpoint to retrieve data from a service at a specific location
 app.get('/classA/:serviceName/all/:location', async (req, res) => {

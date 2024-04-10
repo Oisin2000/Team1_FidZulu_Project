@@ -3,7 +3,7 @@ export class Book {
         public title: string,
         public author: string,
         public price: number,
-        public ISBN: string,
+        public isbn: string,
         public publisher: string,
     ) { }
 }
