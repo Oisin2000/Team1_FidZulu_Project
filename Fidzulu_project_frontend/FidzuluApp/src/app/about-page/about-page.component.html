@@ -3,14 +3,14 @@
   <h1 class="project-title">Team One Fidzulu Shop Front</h1>
   <h2 class="project-sub-title">Click below to shop!</h2>
   <div class="team-data-container" *ngIf="showTeamData">
-    <h2>About Our Team</h2>
-    <p>Team Name: {{ teamData?.team }}</p>
-    <p>Team Members:</p>
-    <ul>
-      <li *ngFor="let member of teamData?.membersNames">{{ member }}</li>
-    </ul>
-  </div>
+    <p><strong>Team Name:</strong> {{ teamData?.team }}</p>
+    <p><strong>Team Members:</strong></p>
+    <div class="team-members">
+        <div class="team-member" *ngFor="let member of teamData?.membersNames">{{ member }}</div>
+    </div>
 </div>
+</div>
+
 
 
 

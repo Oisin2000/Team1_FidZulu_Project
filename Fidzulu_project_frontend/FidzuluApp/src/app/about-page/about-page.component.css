@@ -44,24 +44,37 @@
   }
   
   .team-data-container {
-    top: calc(100% + 10px); /* Position it just below the title with some spacing */
-    left: 0;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: calc(100% - 100px);
-  }
-  
-  .team-data-container h2 {
-    font-size: 24px;
+    width: 100%;
+    max-width: 800px; 
+    margin: 0 auto;
+    padding: 10px;
+    border: px solid #ccc;
+}
+
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.team-member {
+    width: calc(50% - 10px);
     margin-bottom: 10px;
-  }
-  
-  .team-data-container ul {
-    padding-left: 20px;
-  }
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    text-align: center; 
+}
+
+p {
+    text-align: center; 
+}
+
+strong {
+    font-weight: bold; 
+}
+
+
   
   
   
