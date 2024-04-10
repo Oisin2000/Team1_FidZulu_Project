@@ -7,7 +7,7 @@ import { TeamServiceService } from '../services/team-service.service';
   styleUrls: ['./about-page.component.css']
 })
 export class AboutPageComponent {
-
+  showTeamData: boolean = false;
   teamData: any;
 
   constructor(private teamService: TeamServiceService) {}
@@ -18,6 +18,10 @@ export class AboutPageComponent {
 
   fetchTeamData(): void {
     this.teamService.getTeamData().subscribe(data => this.teamData = data)
+  }
+
+  toggleTeamData(): void {
+    this.showTeamData = !this.showTeamData;
   }
 
 }

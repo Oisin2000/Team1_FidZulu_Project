@@ -1,30 +1,91 @@
+/* Container for tables */
 .table-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  /* Individual tables */
-  .table {
-    width: 45%; /* Adjust as needed */
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  /* Table headers */
-  .table th {
-    background-color: #f2f2f2;
-    padding: 8px;
-    text-align: left;
-  }
-  /* Table rows */
-  .table td, .table th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  /* Alternating row background */
-  .table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  /* Hover effect on rows */
-  .table tbody tr:hover {
-    background-color: #ddd;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* Individual tables */
+.table {
+  width: 45%; /* Adjust as needed */
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adding shadow for depth */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Table headers */
+.table th {
+  background-color: #f2f2f2;
+  padding: 12px; /* Increase padding for better readability */
+  text-align: left;
+  border-bottom: 1px solid #ddd; /* Adding border bottom for separation */
+}
+
+/* Table rows */
+.table td, .table th {
+  border: 1px solid #ddd;
+  padding: 12px; /* Increase padding for better readability */
+}
+
+/* Alternating row background */
+.table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Hover effect on rows */
+.table tbody tr:hover {
+  background-color: #ddd;
+}
+
+/* Region Selector */
+.region-selector {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.region-selector label {
+  font-weight: bold;
+  margin-right: 10px; 
+  font-size: 20px;
+}
+
+.region-selector select {
+  padding: 12px; 
+  border-radius: 8px; 
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 20px; 
+}
+
+
+/* Button styles */
+.shop-button {
+  background-color: #4CAF50; /* Green background */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Button hover effect */
+.shop-button:hover {
+  background-color: #45a049; /* Darker green when hovered */
+}
+
+/* Button clicked effect */
+.shop-button.clicked {
+  background-color: black; /* Blue background when clicked */
+}
+
+.container {
+  margin-top: 60px;
+}

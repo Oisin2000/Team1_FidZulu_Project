@@ -1,7 +1,16 @@
-<h2>About Our Team</h2>
-<p>Team Name: {{ teamData?.team }}</p>
-<p>Team Members:</p>
-<ul>
-  <li *ngFor="let member of teamData?.membersNames">{{ member }}</li>
-</ul>
+<div class="about-team-container">
+  <button class="team-button" (click)="toggleTeamData()" [class.clicked]="showTeamData">About Our Team</button>
+  <h1 class="project-title">Team One Fidzulu Shop Front</h1>
+  <h2 class="project-sub-title">Click below to shop!</h2>
+  <div class="team-data-container" *ngIf="showTeamData">
+    <h2>About Our Team</h2>
+    <p>Team Name: {{ teamData?.team }}</p>
+    <p>Team Members:</p>
+    <ul>
+      <li *ngFor="let member of teamData?.membersNames">{{ member }}</li>
+    </ul>
+  </div>
+</div>
+
+
 
