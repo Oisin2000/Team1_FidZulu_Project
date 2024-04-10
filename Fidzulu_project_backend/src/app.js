@@ -39,7 +39,7 @@ app.get('/:service/all/:location', async (req, res) => {
         salesTaxRate = 0.23;
         break;
       case 'IN':
-        conversionRate = 0.014; // Convert USD to INR
+        conversionRate = 83.19; // Convert USD to INR
         salesTaxRate = 0.18;
         break;
       default:
