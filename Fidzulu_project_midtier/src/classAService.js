@@ -15,6 +15,11 @@ const servicePortMap = {
     toys: 3033
 };
 
+const teamData = {
+    team: "Team One",
+    membersNames: ["Eve", "Sean", "Oisin", "Liam", "Robert"]
+};
+
 app.use(cors());
 
 // Endpoint to retrieve data from a service at a specific location
@@ -36,6 +41,10 @@ app.get('/classA/:serviceName/all/:location', async (req, res) => {
         console.error(`Error fetching data from ${serviceName} backend service:`, error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
+});
+
+app.get('/classA/team', (req, res) => {
+    res.json(teamData);
 });
 
 // Start the server
