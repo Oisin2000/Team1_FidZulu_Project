@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const oracle = require('oracledb');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // Oracle DB connection configuration
 const dbConfig = {
@@ -90,7 +89,19 @@ app.get('/:service/all/:location', async (req, res) => {
   }
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+// Assign service with corresponding port value to ports object
+const ports = {
+    bikes: 3031,
+    food: 3032,
+    toys: 3033,
+    books: 3034,
+    dvds: 3035,
+    laptops: 3036
+};
+
+// Each service running on a unique port
+Object.keys(ports).forEach(service => {
+    app.listen(ports[service], () => {
+      console.log(`${service} service is running on port ${ports[service]}`);
+    });
 });
