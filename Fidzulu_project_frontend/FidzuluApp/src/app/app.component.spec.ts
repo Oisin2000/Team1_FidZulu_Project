@@ -1,9 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MainPageComponent } from './main-page/main-page.component';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    declarations: [AppComponent]
+    imports: [HttpClientModule],
+    declarations: [AppComponent,
+    AboutPageComponent,
+  MainPageComponent]
   }));
 
   it('should create the app', () => {
@@ -18,10 +24,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('FidzuluApp');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('FidzuluApp app is running!');
-  });
 });
