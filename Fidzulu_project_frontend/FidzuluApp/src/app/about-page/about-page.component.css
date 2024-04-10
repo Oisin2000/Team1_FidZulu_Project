@@ -1,0 +1,59 @@
+.about-team-container {
+    position: relative;
+    margin-top: 20px;
+  }
+  
+  .project-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-right: 20px;
+    margin-left: 40%;
+  }
+  
+  .team-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  .team-button:hover {
+    background-color: #45a049;
+  }
+
+  .team-button.clicked {
+    background-color: black;
+  }
+  
+  .team-data-container {
+    top: calc(100% + 10px); /* Position it just below the title with some spacing */
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: calc(100% - 100px);
+  }
+  
+  .team-data-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .team-data-container ul {
+    padding-left: 20px;
+  }
+  
+  
+  
+  
+  
