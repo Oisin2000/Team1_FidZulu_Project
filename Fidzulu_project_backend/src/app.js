@@ -107,3 +107,6 @@ Object.keys(ports).forEach(service => {
       console.log(`${service} service is running on port ${ports[service]}`);
     });
 });
+
+
+module.exports = app;
