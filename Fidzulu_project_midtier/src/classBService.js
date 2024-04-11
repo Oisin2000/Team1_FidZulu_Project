@@ -15,6 +15,11 @@ const servicePortMap = {
     laptops: 3036
 };
 
+const teamData = {
+    team: "Team One",
+    membersNames: ["Eve", "Sean", "Oisin", "Liam", "Robert"]
+};
+
 app.use(cors());
 
 // Endpoint to retrieve data from a service at a specific location
@@ -38,7 +43,13 @@ app.get('/classB/:serviceName/all/:location', async (req, res) => {
     }
 });
 
+app.get('/classB/team', (req, res) => {
+    res.json(teamData);
+});
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`classB mid-tier service is running on port ${PORT}`);
 });
+
+module.exports = app;

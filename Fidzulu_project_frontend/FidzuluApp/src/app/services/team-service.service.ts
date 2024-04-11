@@ -9,7 +9,7 @@ import { Team } from '../models/team';
 })
 export class TeamServiceService {
   
-  private url = 'http://localhost:3030/fidzulu/team'; // Replace with the actual endpoint path in your Angular application
+  private url = 'http://localhost:3021/classA/team'; // Replace with the actual endpoint path in your Angular application
 
   constructor(private http: HttpClient) { }
 
